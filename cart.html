@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="styles.css">
+</head> 
+<body>
+    <header>
+        <h1>Giỏ Hàng Của Bạn</h1>
+    </header>
+
+    <main>
+        <section class="cart-items">
+            <h2>Danh sách sản phẩm:</h2>
+            <div id="cart-content"></div>
+        </section>
+
+        <section class="checkout-section">
+            <h3>Tổng tiền: <span id="total-price">0</span> VNĐ</h3>
+            <button class="btn" onclick="checkout()">Thanh Toán</button>
+        </section>
+    </main>
+
+    <footer>
+        <marquee behavior="alternate" direction="left">
+            <p>&copy; 2024 Cửa Hàng Thuốc Đông Y. Chúc sức khỏe quý khách.</p>
+        </marquee>
+    </footer>
+
+    <script>
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContent = document.getElementById('cart-content');
+            const totalPriceElement = document.getElementById('total-price');
+            let totalPrice = 0;
+
+            cartContent.innerHTML = '';
+            cart.forEach((item, index) => {
+                const productElement = document.createElement('div');
+                productElement.innerHTML = `
+                    ${item.name} - ${item.quantity}${item.weightType} - ${item.totalPrice.toLocaleString()} VNĐ
+                    <button onclick="removeFromCart(${index})">Xóa</button>
+                `;
+                cartContent.appendChild(productElement);
+
+                // Cộng tổng giá của từng sản phẩm
+                totalPrice += item.totalPrice;
+            });
+
+            totalPriceElement.textContent = totalPrice.toLocaleString();
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Xóa sản phẩm tại vị trí chỉ định
+            localStorage.setItem('cart', JSON.stringify(cart)); // Cập nhật giỏ hàng trong localStorage
+            renderCart(); // Cập nhật lại giao diện giỏ hàng
+        }
+
+        function checkout() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Giỏ hàng trống!');
+                return;
+            }
+            alert('Thanh toán thành công!');
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html'; // Chuyển hướng về trang chính sau khi thanh toán
+        }
+
+        window.onload = renderCart;
+    </script>
+</body>
+</html>

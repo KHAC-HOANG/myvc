@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Đăng Ký Tài Khoản</h1>
+    </header>
+
+    <main>
+        <!-- Form đăng ký -->
+        <form action="register.php" method="POST">
+            <h2>Thông tin tài khoản</h2>
+            <input type="text" name="username" placeholder="Tên đăng nhập" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Mật khẩu" required>
+            
+            <h2>Thông tin cá nhân</h2>
+            <label for="fullname">Họ Tên:</label>
+            <input type="text" name="fullname" placeholder="Họ và tên" required>
+            <div>
+              <label for="date">Ngày sinh:</label>
+            </div>
+            <div>
+                <select name="day" required>
+                    <option value="">Ngày</option>
+                    <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+                <option>31</option>
+                </select>
+                <select name="month" required>
+                    <option value="">Tháng</option>
+                    <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                </select>
+                <input type="text" name="year" placeholder="Năm" required>
+            </div>
+
+            <label for="phone">Số điện thoại:</label>
+            <input type="text" name="phone" placeholder="Số điện thoại" required>
+
+            <label for="address">Địa chỉ:</label>
+            <input type="text" name="address" placeholder="Địa chỉ" required>
+
+            <button type="submit" class="btn">Đăng Ký</button>
+        </form>
+    </main>
+
+    <footer>
+        <marquee behavior="alternate" direction="left">
+            <p>&copy; 2024 Cửa Hàng Thuốc Đông Y. Chúc sức khỏe quý khách.</p>
+        </marquee>
+    </footer>
+</body>
+</html>
